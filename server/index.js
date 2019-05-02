@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const app = express();
 
 const PORT = 7000;
-const mongoURI = "mongodb://localhost/url-shortener";
+const mongoURI = process.env.NODE_ENV === 'development' ? "mongodb://localhost/url-shortener" : `mongodb://${process.env.DB_USER}:${process.env.DB_PASS}@ds151066.mlab.com:51066/url-shortener`;
 const mongoose = require("mongoose");
 
 const connectOptions = {
@@ -14,7 +14,7 @@ const connectOptions = {
 
 mongoose.Promise = global.Promise;
 mongoose.connect(mongoURI, connectOptions, (err, db) => {
-    if (err) console.log(`Error: ${er}`);
+    if (err) console.log(`Error: ${err}`);
     console.log(`Connected to MongoDB`);
 });
 app.use(bodyParser.json());   
