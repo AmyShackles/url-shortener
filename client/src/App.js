@@ -27,13 +27,8 @@ function App() {
     type="url"
     required
     />
-    <input
-    value={shortUrl ? `${process.env.REACT_APP_ENDPOINT}/${shortUrl}` : ''}
-    onChange={e => setShortUrl(e.target.value)}
-    placeholder="short URL"
-    name="shortUrl"
-    type="url"
-    />
+    {shortUrl ?
+    <a href={`${process.env.REACT_APP_ENDPOINT}/${shortUrl}`} alt="shortUrl created from originalUrl">{`${process.env.REACT_APP_ENDPOINT}/${shortUrl}`}</a> : null }
     <button type="submit">Submit</button>
 </form>
   );

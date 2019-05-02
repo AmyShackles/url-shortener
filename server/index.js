@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require("body-parser");
 const app = express();
 
-const PORT = process.env.PORT || 7000;
+const PORT = process.env.PORT;
 const mongoURI = process.env.NODE_ENV === 'development' ? "mongodb://localhost/url-shortener" : `mongodb://${process.env.DB_USER}:${process.env.DB_PASS}@ds151066.mlab.com:51066/url-shortener`;
 const mongoose = require("mongoose");
 
