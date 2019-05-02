@@ -6,7 +6,7 @@ const errorUrl = "http://localhost/error";
 
 
 module.exports = app => {
-    app.get("/api/item/:code", async (req, res) => {
+    app.get("/:code", async (req, res) => {
         const urlCode = req.params.code;
         const item = await UrlShorten.findOne({ urlCode: urlCode });
         if (item) {
@@ -15,7 +15,7 @@ module.exports = app => {
             return res.redirect(errorUrl);
         }
     });
-    app.post("/api/item", async (req, res) => {
+    app.post("/", async (req, res) => {
         const { originalUrl, shortBaseUrl } = req.body;
         if (validUrl.isUri(shortBaseUrl)) {
         } else {
