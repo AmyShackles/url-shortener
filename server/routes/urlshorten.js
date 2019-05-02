@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const validUrl = require("valid-url");
 const UrlShorten = mongoose.model("UrlShorten");
 const shortid = require("shortid");
-const errorUrl = "http://localhost/error";
+const errorUrl = process.env.NODE_ENV === 'development' ? "http://localhost/error" : "https://hackless.herokuapp.com/error";
 
 
 module.exports = app => {
