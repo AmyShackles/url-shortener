@@ -1,36 +1,30 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import {
+  About,
+  Contact,
+  Header,
+  Navigation,
+  URLShortener,
+  Footer
+} from "./components";
+
+import "./App.css";
 
 function App() {
-  const [originalUrl, setOriginalUrl] = useState("");
-  const [shortUrl, setShortUrl] = useState("");
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    axios.post(`${process.env.REACT_APP_ENDPOINT}`,
-    {
-      originalUrl: originalUrl,
-      shortBaseUrl: process.env.REACT_APP_ENDPOINT
-    })
-    .then(response => {
-      setShortUrl(response.data.urlCode)
-    })
-    .catch(err => console.log(err))
-  };
   return (
-  <form onSubmit={handleSubmit}>
-    <input
-    value={originalUrl}
-    onChange={e => setOriginalUrl(e.target.value)}
-    placeholder="Original Url"
-    name="originalUrl"
-    type="url"
-    required
-    />
-    {shortUrl ?
-    <a href={`${process.env.REACT_APP_ENDPOINT}/${shortUrl}`} alt="shortUrl created from originalUrl">{`${process.env.REACT_APP_ENDPOINT}/${shortUrl}`}</a> : null }
-    <button type="submit">Submit</button>
-</form>
+    <Router>
+      <div>
+        <Header />
+        <Navigation />
+        <main>
+          <Route exact path="/" component={URLShortener}/>  
+          <Route path="/about" component={About} />
+          <Route path="/contact" component={Contact} />
+        </main>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
