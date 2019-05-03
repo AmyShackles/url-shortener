@@ -1,0 +1,13 @@
+header {
+    display: flex;
+    color: white;
+    top: 0;
+    position: fixed;
+    height: 60px;
+    z-index: 10;
+}
+main {
+    margin-top: 80px;
+    text-align: center;
+    height: calc(100vh - 120px);
+}
