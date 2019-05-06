@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "NODE_ENV=development PORT=7000 REACT_ENDPOINT=http://localhost:3000 nodemon server/index.js ",
+    "start": "NODE_ENV=development PORT=7000 REACT_ENDPOINT=http://localhost:3000 node server/index.js ",
     "build": "node server/index.js"
   },
   "dependencies": {
