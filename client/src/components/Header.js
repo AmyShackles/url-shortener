@@ -4,7 +4,7 @@ import "../styles/Header.css";
 export function Header() {
     return (
         <header role="banner">
-            <p>Hackless!</p>
+            <h1>Hackless!</h1>
         </header>
     )
 }

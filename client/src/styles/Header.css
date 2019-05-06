@@ -1,13 +1,20 @@
 header {
     display: flex;
+    width: 147px;
     color: white;
     top: 0;
     position: fixed;
     height: 60px;
     z-index: 10;
+    align-items: center;
+    background-color: black;
 }
-main {
-    margin-top: 80px;
-    text-align: center;
-    height: calc(100vh - 120px);
+header h1 {
+    padding: 0 15px;
+}
+h1, h2, h3, h4, h5, h6, a {
+    font-family: 'Spectral', serif;
+}
+p {
+    font-family: 'Roboto', sans-serif;
 }
