@@ -4,8 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "NODE_ENV=development PORT=7000 REACT_ENDPOINT=http://localhost:3000 node server/index.js ",
-    "build": "node server/index.js"
+    "start": "NODE_ENV=development PORT=7000 REACT_ENDPOINT=http://localhost:3000 node server/index.js "
   },
   "dependencies": {
     "express": "^4.16.4",
@@ -13,7 +12,5 @@
     "shortid": "^2.2.14",
     "valid-url": "^1.0.9"
   },
-  "devDependencies": {
-    "nodemon": "^1.19.0"
-  }
+  "devDependencies": {}
 }
