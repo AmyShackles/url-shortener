@@ -4,6 +4,7 @@ import axios from 'axios';
 export function URLShortener() {
     const [originalUrl, setOriginalUrl] = useState("");
     const [shortUrl, setShortUrl] = useState("");
+    const [errorMessage, setErrorMessage] = useState(“”);
     const handleSubmit = (e) => {
         e.preventDefault();
         axios.post(`${process.env.REACT_APP_ENDPOINT}`,
@@ -14,7 +15,7 @@ export function URLShortener() {
         .then(response => {
         setShortUrl(response.data.urlCode)
         })
-        .catch(err => throw err.message)
+        .catch(err => setErrorMessage(err.message))
     };
     return (
     <form onSubmit={handleSubmit}>
@@ -30,6 +31,8 @@ export function URLShortener() {
         />
         {shortUrl ?
         <a href={`${process.env.REACT_APP_ENDPOINT}/${shortUrl}`} alt="shortUrl created from originalUrl">{`${process.env.REACT_APP_ENDPOINT}/${shortUrl}`}</a> : null }
+        {errorMessage ?
+        <p>{errorMessage.message}</p> : null}
         <button type="submit">Submit</button>
     </form>
     );
