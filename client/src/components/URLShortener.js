@@ -14,7 +14,7 @@ export function URLShortener() {
         .then(response => {
         setShortUrl(response.data.urlCode)
         })
-        .catch(err => console.log(err))
+        .catch(err => throw err.message)
     };
     return (
     <form onSubmit={handleSubmit}>
