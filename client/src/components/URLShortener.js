@@ -4,7 +4,7 @@ import axios from 'axios';
 export function URLShortener() {
     const [originalUrl, setOriginalUrl] = useState("");
     const [shortUrl, setShortUrl] = useState("");
-    const [errorMessage, setErrorMessage] = useState(“”);
+    const [errorMessage, setErrorMessage] = useState("");
     const handleSubmit = (e) => {
         e.preventDefault();
         axios.post(`${process.env.REACT_APP_ENDPOINT}`,
