@@ -9,7 +9,7 @@
   "dependencies": {
     "axios": "0.19",
     "express": "^4.16.4",
-    "mongoose": "^5.5.5",
+    "mongoose": "^5.7.5",
     "shortid": "^2.2.14",
     "valid-url": "^1.0.9"
   },
