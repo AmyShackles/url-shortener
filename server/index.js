@@ -1,15 +1,18 @@
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require("body-parser");
-const app = express();
+const cors = require('cors')
 
+const app = express();
 const PORT = process.env.PORT;
 const mongoURI = process.env.NODE_ENV === 'development' ? "mongodb://localhost/url-shortener" : process.env.MONGO_URI;
 const mongoose = require("mongoose");
+app.use(cors({origin: process.env.REACT_ENDPOINT, methods: ['GET','PUT', 'POST', 'DELETE'], allowedHeaders: ['Content-Type', 'Accept', 'x-access-token', 'X-Key']}))
 
 const connectOptions = {
     keepAlive: true,
-    reconnectTries: Number.MAX_VALUE,
     useNewUrlParser: true,
+    useUnifiedTopology: true
 };
 
 mongoose.Promise = global.Promise;
@@ -19,9 +22,6 @@ mongoose.connect(mongoURI, connectOptions, (err, db) => {
 });
 app.use(bodyParser.json());   
 app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", process.env.REACT_ENDPOINT);
-    res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
-    res.header("Access-Control-Allow-Headers", "Content-type, Accept, x-access-token, X-Key");
     if (req.method === "OPTIONS") {
         res.status(200).end();
     } else {
